@@ -1,0 +1,53 @@
+/* ═══════════════════════════════════════════════════════
+   BEACH PHOTO BACKGROUND
+═══════════════════════════════════════════════════════ */
+
+.beach-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.beach-img {
+  position: absolute;
+  inset: 0;
+  background-image: url('/beach-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: beachPan 60s ease-in-out infinite alternate;
+}
+
+@keyframes beachPan {
+  0%   { transform: scale(1.05) translateX(0) translateY(0); }
+  25%  { transform: scale(1.08) translateX(-1%) translateY(-0.5%); }
+  50%  { transform: scale(1.06) translateX(0.5%) translateY(0.5%); }
+  75%  { transform: scale(1.1) translateX(-0.5%) translateY(-1%); }
+  100% { transform: scale(1.05) translateX(0) translateY(0); }
+}
+
+/* Soft overlay so cards + text stay readable */
+.beach-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.35) 40%,
+    rgba(255,255,255,0.30) 70%,
+    rgba(255,255,255,0.40) 100%
+  );
+  backdrop-filter: blur(2px);
+}
+
+[data-theme="dark"] .beach-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(10,10,30,0.55) 0%,
+    rgba(10,10,30,0.45) 40%,
+    rgba(10,10,30,0.40) 70%,
+    rgba(10,10,30,0.50) 100%
+  );
+}
